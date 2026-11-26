@@ -1,0 +1,115 @@
+/* Додаткові стилі поверх Bootstrap */
+:root {
+  --accent: #4f46e5;
+  --accent-soft: #eceafd;
+  --muted: #5d6478;
+  --line: #e3e6ef;
+  --bs-body-bg: #f6f7fb;
+  --bs-body-color: #1c1f2a;
+  --bs-primary: #4f46e5;
+  --bs-primary-rgb: 79, 70, 229;
+  --bs-link-color: #4f46e5;
+}
+
+body { font-family: Arial, sans-serif; line-height: 1.6; }
+
+h1, h2, h3, h4, h5 { font-family: Georgia, serif; }
+
+a { text-decoration: none; }
+
+/* Header */
+.brand { font-size: 1.35rem; font-weight: 700; }
+@media (min-width: 768px) { .brand { font-size: 1.6rem; } }
+.brand a { color: inherit; }
+.brand span { color: var(--accent); }
+
+.navbar .nav-link {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active { background: var(--accent-soft); color: var(--accent); }
+
+/* Posts */
+.section-title { font-size: 1.9rem; }
+
+.post {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.post:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(79, 70, 229, .12); }
+.post .card-body { padding: 0 0 0 1rem; }
+
+.thumb {
+  height: 100%;
+  min-height: 120px;
+  border-radius: 10px;
+  background: var(--g, var(--accent-soft));
+  display: grid;
+  place-items: center;
+  font-size: 2.6rem;
+}
+
+.tag {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--accent);
+}
+.post h3 a { color: inherit; }
+.post h3 a:hover { color: var(--accent); }
+.meta { font-size: .85rem; color: var(--muted); }
+.excerpt { color: var(--muted); }
+.more { font-weight: 600; color: var(--accent); }
+.more:hover { text-decoration: underline; }
+
+/* Кнопка */
+.btn-primary {
+  --bs-btn-bg: #4f46e5;
+  --bs-btn-border-color: #4f46e5;
+  --bs-btn-hover-bg: #4338ca;
+  --bs-btn-hover-border-color: #4338ca;
+  --bs-btn-active-bg: #3730a3;
+  --bs-btn-active-border-color: #3730a3;
+  --bs-btn-focus-shadow-rgb: 79, 70, 229;
+  font-weight: 600;
+}
+
+/* Sidebar */
+.sidebar { border: 1px solid var(--line); border-radius: 14px; }
+.side-title { margin-bottom: 10px; }
+.side-link {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: var(--muted);
+}
+.side-link:hover { background: var(--accent-soft); color: var(--accent); }
+
+/* Анімація появи карток при прокручуванні */
+.reveal { opacity: 0; transform: translateY(24px); }
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+/* Мобільні: картинка зверху, текст знизу */
+@media (max-width: 767.98px) {
+  .navbar .nav-link { padding: 10px 14px; }
+  .navbar-collapse { padding-bottom: 6px; }
+  .post .card-body { padding: 1rem 0 0; }
+  .thumb { height: 130px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+  .post, .reveal.visible { transition: none; }
+}
